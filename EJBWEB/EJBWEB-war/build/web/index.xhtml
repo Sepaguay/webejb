@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        TABLA USUARIIOS
+        <h:form>
+            <h:dataTable var="u" value="#{usuarioControlador.USU()}" border="1" cellpadding="2" cellspacing="2" >
+                <h:column>
+                    <f:facet name="header">PIDM</f:facet>
+                    <h:outputText value="#{u.uztuserPidm}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                    <h:outputText value="#{u.uztuserId}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">NOMBRES</f:facet>
+                    <h:outputText value="#{u.uztuserNombres}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">CARGO</f:facet>
+                    <h:outputText value="#{u.uztuserCargo}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">ESTADO</f:facet>
+                    <h:outputText value="#{u.uztuserEstado}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">CAMPUS</f:facet>
+                    <h:outputText value="#{u.uztuserCampus}"></h:outputText>
+                </h:column>
+
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+
