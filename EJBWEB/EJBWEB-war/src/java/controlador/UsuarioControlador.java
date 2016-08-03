@@ -30,13 +30,13 @@ public class UsuarioControlador implements Serializable{
     {
         return this.uztuserFacade.findAll();
     }
-    
+    // Transforma una List a Json en formato String
     public String toJson(List prueba)
     {
         JSONSerializer json= new JSONSerializer();
         return json.serialize(prueba);
     }
-    
+    // encripta un texto en base 64 
      public String encriptar(String texto)  {
  
         String secretKey = "qualityinfosolutions"; //llave para encriptar datos
