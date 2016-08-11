@@ -30,6 +30,15 @@ public class UsuarioControlador implements Serializable{
     {
         return this.uztuserFacade.findAll();
     }
+    public String mensaje()
+    {
+        String a= "hola";
+        return "hola";
+    }
+    public List<Uztuser> usuarioId()
+    {
+        return this.uztuserFacade.listUsuarios();
+    }
     // Transforma una List a Json en formato String
     public String toJson(List prueba)
     {
@@ -37,7 +46,7 @@ public class UsuarioControlador implements Serializable{
         return json.serialize(prueba);
     }
     // encripta un texto en base 64 
-     public String encriptar(String texto)  {
+    public String encriptar(String texto)  {
  
         String secretKey = "qualityinfosolutions"; //llave para encriptar datos
         String base64EncryptedString = "";

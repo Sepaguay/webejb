@@ -9,8 +9,9 @@
     <h:body>
         TABLA USUARIIOS att Sandrita
         toJson
-            #{usuarioControlador.toJson(usuarioControlador.USU())}
-        
+        #{usuarioControlador.toJson(usuarioControlador.usuarioId())}
+        #{usuarioControlador.mensaje()}
+
         <h:form>
             <h:inputText value="#{usuarioControlador.toJson(usuarioControlador.USU())}"></h:inputText>
             <h:dataTable var="u" value="#{usuarioControlador.USU()}" border="1" cellpadding="2" cellspacing="2" >
