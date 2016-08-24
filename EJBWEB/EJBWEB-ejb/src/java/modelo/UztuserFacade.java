@@ -7,6 +7,7 @@ package modelo;
 
 import entidades.Uztuser;
 import flexjson.JSONSerializer;
+import java.math.BigDecimal;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,11 +59,48 @@ public class UztuserFacade extends AbstractFacade<Uztuser> {
     }
 
     ////////////////////////
-    public Uztuser obtenerUsuarioID(String Id) throws Exception {
+    //Metodo que devuelve el usuario segun el ID
+    public Uztuser findUserByID(String Id) {
 
-        Query query = em.createQuery("Select u from Uztuser u Where u.uztuserId = :value");
-        query.setParameter("value", Id);
+        try{
+            Query query = em.createQuery("Select u from Uztuser u Where u.uztuserId = :value");
+            query.setParameter("value", Id);
+            return (Uztuser) query.getSingleResult();
+        }catch(NoResultException e)
+        {
+            return null;
+        }
+        
+
+    }
+    ////////////////////////////.
+    
+    //Metodo que devuelve el usuario segun el Pidm
+    public Uztuser findUserByPidm(BigDecimal PIDM) {
+
+        try{
+        Query query = em.createQuery("SELECT u FROM Uztuser u WHERE u.uztuserPidm = :uztuserPidm");
+        query.setParameter("uztuserPidm", PIDM);
         return (Uztuser) query.getSingleResult();
+        }catch(NoResultException e)
+        {
+            return null;
+        }
+
+    }
+    ////////////////////////////.
+    
+    //Metodo que devuelve el usuario segun el Nombre
+    public List<Uztuser> findUserByNombres(String nombres) {
+
+        try{
+        Query query = em.createQuery("SELECT u FROM Uztuser u WHERE UPPER(u.uztuserNombres) LIKE UPPER(:uztuserNombres)");
+        query.setParameter("uztuserNombres", "%"+nombres+"%");
+        return query.getResultList();
+        }catch(NoResultException e)
+        {
+            return null;
+        }
 
     }
     ////////////////////////////.
