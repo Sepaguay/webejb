@@ -3,6 +3,7 @@ package controlador;
 
 import entidades.Uztuser;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -25,9 +26,10 @@ public class UsuarioControlador implements Serializable{
         return this.uztuserFacade.listUsuarios();
     }
     
-    public Uztuser obtenerUsuID() throws Exception
+    public List<Uztuser> obtenerUsuarioID()
     {
-        return this.uztuserFacade.obtenerUsuarioID("L00012066");
+       
+        return this.uztuserFacade.findUserByNombres("sAnDra");
          
     }
     
