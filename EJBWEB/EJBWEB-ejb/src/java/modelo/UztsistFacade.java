@@ -12,6 +12,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -31,6 +32,15 @@ public class UztsistFacade extends AbstractFacade<Uztsist> {
     public UztsistFacade() {
         super(Uztsist.class);
     }
+//MÉTODO QUE DEVUELVE TODOS LOS SISTEMAS
+
+    public List<Uztsist> findAllSistemas() {
+        try {
+            return em.createNamedQuery("Uztsist.findAll").getResultList();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
 
     ///MÉTODO PARA ENCONTRAR SISTEMA POR ID
     public Uztsist findSistemaById(BigDecimal uztsistId) {
@@ -42,9 +52,11 @@ public class UztsistFacade extends AbstractFacade<Uztsist> {
     }
 
     //MÉTODO PARA OBTENER SISTEMA POR NOMBRE
-    public Uztsist findSistemaByNombre(String uztsistNombre) {
+    public List<Uztsist> findSistemaByNombre(String uztsistNombre) {
         try {
-            return (Uztsist) em.createNamedQuery("Uztsist.findByUztsistNombre").setParameter("uztsistNombre", uztsistNombre).getSingleResult();
+            Query query = em.createQuery("SELECT u FROM Uztsist u WHERE UPPER(u.uztsistNombre) LIKE UPPER(:uztsistNombre)");
+            query.setParameter("uztsistNombre", "%" + uztsistNombre + "%");
+            return query.getResultList();
         } catch (NoResultException e) {
             return null;
         }
@@ -53,16 +65,31 @@ public class UztsistFacade extends AbstractFacade<Uztsist> {
     //MÉTODO PARA OBTENER SISTEMAS DE ACUERDO Al ESTADO 
     public List<Uztsist> findSistemasByEstado(Character uztsistEstado) {
         try {
-            return em.createNamedQuery("Uztsist.findByUztsistEstado").setParameter("uztsistEstado", uztsistEstado).getResultList();
+            Query query = em.createQuery("SELECT u FROM Uztsist u WHERE UPPER(u.uztsistEstado) LIKE UPPER(:uztsistEstado)");
+            query.setParameter("uztsistEstado", "%" + uztsistEstado + "%");
+            return query.getResultList();
         } catch (NoResultException e) {
             return null;
         }
     }
-    
+
     //MÉTODO PARA OBTENER SISTEMAS POR DESCRIPCIÓN 
-    public List<Uztsist> findSistemasByDescripción(String uztsistNombre) {
+    public List<Uztsist> findSistemasByDescripción(String uztsistDescripcion) {
         try {
-            return em.createNamedQuery("Uztsist.findByUztsistEstado").setParameter("uztsistEstado", uztsistNombre).getResultList();
+            Query query = em.createQuery("SELECT u FROM Uztsist u WHERE UPPER(u.uztsistDescripcion) LIKE UPPER(:uztsistDescripcion)");
+            query.setParameter("uztsistDescripcion", "%" + uztsistDescripcion + "%");
+            return query.getResultList();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    //MÉTODO PARA OBTENER SISTEMAS POR RUTA 
+    public List<Uztsist> findSistemasByRuta(String uztsistRuta) {
+        try {
+            Query query = em.createQuery("SELECT u FROM Uztsist u WHERE UPPER(u.uztsistRuta) LIKE UPPER(:uztsistRuta)");
+            query.setParameter("uztsistRuta", "%" + uztsistRuta + "%");
+            return query.getResultList();
         } catch (NoResultException e) {
             return null;
         }

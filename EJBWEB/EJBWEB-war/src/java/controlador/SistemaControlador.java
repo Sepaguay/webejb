@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package controlador;
 
 import entidades.Uztsist;
@@ -21,26 +20,35 @@ import modelo.UztsistFacade;
  */
 @ManagedBean
 @SessionScoped
-public class SistemaControlador implements Serializable{
+public class SistemaControlador implements Serializable {
+
     @EJB
     private UztsistFacade uztsistFacade;
 
-    
     public SistemaControlador() {
     }
-    
-    public Uztsist obtenerSistemaId()
-    {
+
+    public List<Uztsist> obtenerSistemas() {
+        return this.uztsistFacade.findAll();
+    }
+
+    public Uztsist obtenerSistemaId() {
         return this.uztsistFacade.findSistemaById(new BigDecimal(1));
     }
-    
-    public Uztsist obtenerSistemaNombre()
-    {
+
+    public List<Uztsist> obtenerSistemaNombre() {
         return this.uztsistFacade.findSistemaByNombre("WEBFLOW");
     }
-    
-     public List<Uztsist> obtenerSistemasEstado()
-    {
+
+    public List<Uztsist> obtenerSistemasEstado() {
         return this.uztsistFacade.findSistemasByEstado(new Character('A'));
+    }
+
+    public List<Uztsist> obtenerSistemasRuta() {
+        return this.uztsistFacade.findSistemasByRuta("miespe");
+    }
+
+    public List<Uztsist> obtenerSistemasDescripción() {
+        return this.uztsistFacade.findSistemasByDescripción("sistema");
     }
 }
