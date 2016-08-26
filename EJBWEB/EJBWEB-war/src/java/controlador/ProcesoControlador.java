@@ -26,7 +26,7 @@ public class ProcesoControlador implements Serializable{
     private UztprocFacade uztprocFacade;
 
    
-    
+    // metodos para la vista 
     public ProcesoControlador() {
     }
     
