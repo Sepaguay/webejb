@@ -15,7 +15,6 @@ import java.util.*;
 public class UsuarioControlador implements Serializable{
     @EJB
     private UztuserFacade uztuserFacade;
-    private Uztuser usu;
     
     
     public UsuarioControlador() {
@@ -26,12 +25,35 @@ public class UsuarioControlador implements Serializable{
         return this.uztuserFacade.listUsuarios();
     }
     
-    public List<Uztuser> obtenerUsuarioID()
+    public Uztuser obtenerUsuarioID(String id)
     {
        
-        return this.uztuserFacade.findUserByNombres("sAnDra");
-         
+        return this.uztuserFacade.findUserByID(id);        
     }
     
+    public Uztuser obtenerUsuarioPorPidm(BigDecimal pidm)
+    {
+        return this.uztuserFacade.findUserByPidm(pidm);
+    }
+    
+    public List<Uztuser> obtenerUsuarioPorNombres(String nombres)
+    {
+        return this.uztuserFacade.findUserByNombres(nombres);
+    }
+       
+    public List<Uztuser> obtenerUsuarioPorCargo(String cargo)
+    {
+        return this.uztuserFacade.findUserByCargo(cargo);
+    }
+         
+    public List<Uztuser> obtenerUsuarioPorEstado(Character estado)
+    {
+        return this.uztuserFacade.findUserByEstado(estado);
+    }
+         
+    public List<Uztuser> obtenerUsuarioPorCampus(String campus)
+    {
+        return this.uztuserFacade.findUserByCampus(campus);
+    }
     
 }
