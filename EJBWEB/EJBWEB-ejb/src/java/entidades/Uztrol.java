@@ -55,6 +55,8 @@ public class Uztrol implements Serializable {
     @Column(name = "UZTROL_FECHA")
     @Temporal(TemporalType.DATE)
     private Date uztrolFecha;
+    @Column(name = "UZTSIST_ID")
+    private BigDecimal uztsistId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "uztrol")
     private List<Uztrous> uztrousList;
 
@@ -104,6 +106,14 @@ public class Uztrol implements Serializable {
 
     public void setUztrousList(List<Uztrous> uztrousList) {
         this.uztrousList = uztrousList;
+    }
+
+    public BigDecimal getUztsistId() {
+        return uztsistId;
+    }
+
+    public void setUztsistId(BigDecimal uztsistId) {
+        this.uztsistId = uztsistId;
     }
 
     @Override
