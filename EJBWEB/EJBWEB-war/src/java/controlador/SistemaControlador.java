@@ -8,6 +8,7 @@ package controlador;
 import entidades.Uztsist;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -28,12 +29,24 @@ public class SistemaControlador implements Serializable {
     public SistemaControlador() {
     }
 
+    public boolean insertarSistema() {
+        Uztsist nuevo = new Uztsist();
+        nuevo.setUztsistId(new BigDecimal(667));
+        nuevo.setUztsistNombre("prueba 666");
+        nuevo.setUztsistDescripcion("descripcion sistema prueba 66");
+        nuevo.setUztsistRuta("miespe");
+        nuevo.setUztsistEstado('A');
+        nuevo.setUztsistFecha(new Date());
+
+        return this.uztsistFacade.insertSistema(nuevo);
+    }
+
     public List<Uztsist> obtenerSistemas() {
         return this.uztsistFacade.findAll();
     }
 
-    public List<Uztsist>  obtenerSistemaId() {
-        return this.uztsistFacade.findSistemaById(new BigDecimal(1));
+    public String obtenerSistemaId() throws Exception {
+        return this.uztsistFacade.findSistemaById(new BigDecimal(666)).getUztsistNombre();
     }
 
     public List<Uztsist> obtenerSistemaNombre() {

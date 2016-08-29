@@ -7,40 +7,7 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        TABLA USUARIOS #{usuarioControlador.obtenerUsuID()}<br></br>
-        SISTEMA POR ID #{sistemaControlador.obtenerSistemaId()}<br></br>
-        SISTEMA POR NOMBRE #{sistemaControlador.obtenerSistemaNombre()}<br></br>
-        SISTEMAS POR ESTADO #{sistemaControlador.obtenerSistemasEstado()}<br></br>
-<br></br><br></br><br></br><br></br><br></br>
-        <h:form>
-            <h:dataTable var="u" value="#{usuarioControlador.listUsuarios()}" border="1" cellpadding="2" cellspacing="2" >
-                <h:column>
-                    <f:facet name="header">PIDM</f:facet>
-                    <h:outputText value="#{u.uztuserPidm}"></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">ID</f:facet>
-                    <h:outputText value="#{u.uztuserId}"></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">NOMBRES</f:facet>
-                    <h:outputText value="#{u.uztuserNombres}"></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">CARGO</f:facet>
-                    <h:outputText value="#{u.uztuserCargo}"></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">ESTADO</f:facet>
-                    <h:outputText value="#{u.uztuserEstado}"></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">CAMPUS</f:facet>
-                    <h:outputText value="#{u.uztuserCampus}"></h:outputText>
-                </h:column>
-
-            </h:dataTable>
-        </h:form>
+     #{sistemaControlador.obtenerSistemaId()}
     </h:body>
 </html>
 
