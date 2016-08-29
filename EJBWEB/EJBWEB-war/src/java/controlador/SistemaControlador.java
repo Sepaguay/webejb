@@ -31,8 +31,8 @@ public class SistemaControlador implements Serializable {
 
     public boolean insertarSistema() {
         Uztsist nuevo = new Uztsist();
-        nuevo.setUztsistId(new BigDecimal(667));
-        nuevo.setUztsistNombre("prueba 666");
+        nuevo.setUztsistId(new BigDecimal(611));
+        nuevo.setUztsistNombre("prueba 611");
         nuevo.setUztsistDescripcion("descripcion sistema prueba 66");
         nuevo.setUztsistRuta("miespe");
         nuevo.setUztsistEstado('A');
@@ -46,7 +46,7 @@ public class SistemaControlador implements Serializable {
     }
 
     public String obtenerSistemaId() throws Exception {
-        return this.uztsistFacade.findSistemaById(new BigDecimal(666)).getUztsistNombre();
+        return this.uztsistFacade.Desencriptar(this.uztsistFacade.findSistemaById(new BigDecimal(611)).getUztsistNombre());
     }
 
     public List<Uztsist> obtenerSistemaNombre() {
