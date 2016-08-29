@@ -48,17 +48,20 @@ public class UztsistFacade extends AbstractFacade<Uztsist> {
             return null;
         }
     }
-    
-    public boolean insertSistema(Uztsist sistema)
-    {
+
+    public boolean insertSistema(Uztsist sistema) {
+        sistema.setUztsistNombre(encriptar(sistema.getUztsistNombre()));
         
-        return em.merge(sistema)!= null;
+        return em.merge(sistema) != null;
     }
 
     ///MÉTODO PARA ENCONTRAR SISTEMA POR ID
-    public List<Uztsist> findSistemaById(BigDecimal uztsistId) {
+    public Uztsist findSistemaById(BigDecimal uztsistId) throws Exception {
         try {
-            return em.createNamedQuery("Uztsist.findByUztsistId").setParameter("uztsistId", uztsistId).getResultList();
+            Uztsist sisD = (Uztsist) em.createNamedQuery("Uztsist.findByUztsistId").setParameter("uztsistId", uztsistId).getSingleResult();
+           Uztsist sisD1=sisD;
+            sisD.setUztsistNombre(Desencriptar(sisD1.getUztsistNombre()));
+            return sisD;
         } catch (NoResultException e) {
             return null;
         }
