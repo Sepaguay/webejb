@@ -59,8 +59,6 @@ public class UztsistFacade extends AbstractFacade<Uztsist> {
     public Uztsist findSistemaById(BigDecimal uztsistId) throws Exception {
         try {
             Uztsist sisD = (Uztsist) em.createNamedQuery("Uztsist.findByUztsistId").setParameter("uztsistId", uztsistId).getSingleResult();
-           Uztsist sisD1=sisD;
-            sisD.setUztsistNombre(Desencriptar(sisD1.getUztsistNombre()));
             return sisD;
         } catch (NoResultException e) {
             return null;
