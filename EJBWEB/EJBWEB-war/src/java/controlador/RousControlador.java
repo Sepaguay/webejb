@@ -1,4 +1,3 @@
-
 package controlador;
 
 import entidades.Uztrous;
@@ -16,40 +15,42 @@ import modelo.UztrousFacade;
  */
 @ManagedBean
 @SessionScoped
-public class RousControlador implements Serializable{
+public class RousControlador implements Serializable {
+
     @EJB
     private UztrousFacade uztrousFacade;
 
-   
     public RousControlador() {
     }
-    
-  public List<Uztrous> listaRous()
-  {
-      return this.uztrousFacade.findAll();
-  }
-    
-  public List<Uztrous> rousPorIdRol()
-  {
-      return this.uztrousFacade.findRolById(new BigDecimal(7));
-  }
-  public List<Uztrous> rousPorPidmUsuario()
-  {
-      return this.uztrousFacade.findRolByPidm(new BigDecimal(336254));
-  }
-  
-  public List<Uztrous> rousPorEstado()
-  {
-      return this.uztrousFacade.findRousByEstado('A');
-  }
-  public List<Uztrous> rousPorIdRolPidmUsuario()
-  {
-      return this.uztrousFacade.findRousIdRolPidmUsuario(new BigDecimal(7),new BigDecimal(336254));
-  }
-  public List<Object[]> rousPorIdRolPidmUsuarioNombre()
-  {
-      return this.uztrousFacade.findRousIdRolPidmUsuarioNombre(new BigDecimal(8),new BigDecimal(336254));
-  }
-   
-    
+
+    public List<Uztrous> listaRous() {
+        return this.uztrousFacade.findAll();
+    }
+
+    public List<Uztrous> rousPorIdRol() {
+        return this.uztrousFacade.findRolById(new BigDecimal(7));
+    }
+
+    public List<Uztrous> rousPorPidmUsuario() {
+        return this.uztrousFacade.findRolByPidm(new BigDecimal(336254));
+    }
+
+    public List<Uztrous> rousPorEstado() {
+        return this.uztrousFacade.findRousByEstado('A');
+    }
+
+    public List<Uztrous> rousPorIdRolPidmUsuario() {
+        return this.uztrousFacade.findRousIdRolPidmUsuario(new BigDecimal(7), new BigDecimal(336254));
+    }
+
+    // Transforma una List a Json en formato String
+    public String toJson(List prueba) {
+
+        return this.uztrousFacade.toJson(prueba);
+    }
+
+    public String rousPorIdRolPidmUsuarioNombre() {
+        return this.uztrousFacade.toJson(this.uztrousFacade.findRousIdRolPidmUsuarioNombres(new BigDecimal(8), new BigDecimal(336254)));
+    }
+
 }

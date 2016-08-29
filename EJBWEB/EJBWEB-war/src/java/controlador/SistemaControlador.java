@@ -32,7 +32,7 @@ public class SistemaControlador implements Serializable {
         return this.uztsistFacade.findAll();
     }
 
-    public Uztsist obtenerSistemaId() {
+    public List<Uztsist>  obtenerSistemaId() {
         return this.uztsistFacade.findSistemaById(new BigDecimal(1));
     }
 
@@ -51,4 +51,11 @@ public class SistemaControlador implements Serializable {
     public List<Uztsist> obtenerSistemasDescripción() {
         return this.uztsistFacade.findSistemasByDescripción("sistema");
     }
+
+    // Transforma una List a Json en formato String
+    public String toJson(List prueba) {
+
+        return this.uztsistFacade.toJson(prueba);
+    }
+
 }

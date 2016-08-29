@@ -15,19 +15,19 @@ import modelo.UztrolFacade;
  */
 @ManagedBean
 @SessionScoped
-public class RolControlador implements Serializable{
+public class RolControlador implements Serializable {
+
     @EJB
     private UztrolFacade uztrolFacade;
 
-    
     public RolControlador() {
     }
-    
+
     public List<Uztrol> obtenerRoles() {
         return this.uztrolFacade.findAll();
     }
 
-    public Uztrol obtenerRolId() {
+    public List<Uztrol> obtenerRolId() {
         return this.uztrolFacade.findRolById(new BigDecimal(1));
     }
 
@@ -42,5 +42,11 @@ public class RolControlador implements Serializable{
     public List<Uztrol> obtenerRolIdSistema() {
         return this.uztrolFacade.findRolByIdSistema(new BigDecimal(1));
     }
-    
+
+    // Transforma una List a Json en formato String
+    public String toJson(List prueba) {
+
+        return this.uztrolFacade.toJson(prueba);
+    }
+
 }
