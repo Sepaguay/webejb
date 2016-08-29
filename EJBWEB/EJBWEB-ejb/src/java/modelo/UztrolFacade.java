@@ -51,9 +51,9 @@ public class UztrolFacade extends AbstractFacade<Uztrol> {
     }
 
     ///MÉTODO PARA ENCONTRAR ROL POR ID
-    public Uztrol findRolById(BigDecimal uztrolId) {
+    public List<Uztrol> findRolById(BigDecimal uztrolId) {
         try {
-            return (Uztrol) em.createNamedQuery("Uztrol.findByUztrolId").setParameter("uztrolId", uztrolId).getSingleResult();
+            return  em.createNamedQuery("Uztrol.findByUztrolId").setParameter("uztrolId", uztrolId).getResultList();
         } catch (NoResultException e) {
             return null;
         }

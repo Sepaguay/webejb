@@ -1,4 +1,3 @@
-
 package modelo;
 
 import entidades.Uztrous;
@@ -101,6 +100,23 @@ public class UztrousFacade extends AbstractFacade<Uztrous> {
             return null;
         }
     }
+
+    public List<Object[]> findRousIdRolPidmUsuarioNombres(BigDecimal uztrolId, BigDecimal uztuserPidm) {
+        try {
+            Query query = em.createQuery("SELECT r.uztrolNombre,u.uztuserNombres,ru.uztrousFcha,ru.uztrousEstado "
+                    + "FROM Uztrol r, Uztuser u, Uztrous ru where ru.uztrousPK.uztrolId=r.uztrolId and ru.uztrousPK.uztuserPidm=u.uztuserPidm "
+                    + "and ru.uztrousPK.uztrolId = :uztrolId and ru.uztrousPK.uztuserPidm = :uztuserPidm");
+            query.setParameter("uztrolId", uztrolId);
+            query.setParameter("uztuserPidm", uztuserPidm);
+            return query.getResultList();
+            
+        } catch (Exception e) {
+            System.out.print(e.getMessage());
+            return null;
+        }
+    }
+
+    /////////////////////////
 // Transforma una List a Json en formato String
     public String toJson(List prueba) {
         JSONSerializer json = new JSONSerializer();

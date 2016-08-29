@@ -48,11 +48,17 @@ public class UztsistFacade extends AbstractFacade<Uztsist> {
             return null;
         }
     }
+    
+    public boolean insertSistema(Uztsist sistema)
+    {
+        
+        return em.merge(sistema)!= null;
+    }
 
     ///MÉTODO PARA ENCONTRAR SISTEMA POR ID
-    public Uztsist findSistemaById(BigDecimal uztsistId) {
+    public List<Uztsist> findSistemaById(BigDecimal uztsistId) {
         try {
-            return (Uztsist) em.createNamedQuery("Uztsist.findByUztsistId").setParameter("uztsistId", uztsistId).getSingleResult();
+            return em.createNamedQuery("Uztsist.findByUztsistId").setParameter("uztsistId", uztsistId).getResultList();
         } catch (NoResultException e) {
             return null;
         }
@@ -101,6 +107,7 @@ public class UztsistFacade extends AbstractFacade<Uztsist> {
             return null;
         }
     }
+
     // Transforma una List a Json en formato String
     public String toJson(List prueba) {
         JSONSerializer json = new JSONSerializer();

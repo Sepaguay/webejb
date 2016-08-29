@@ -60,97 +60,90 @@ public class UztuserFacade extends AbstractFacade<Uztuser> {
 
     ////////////////////////
     //Metodo que devuelve el usuario segun el ID
-    public Uztuser findUserByID(String Id) {
+    public List<Uztuser> findUserByID(String Id) {
 
-        try{
+        try {
             Query query = em.createQuery("Select u from Uztuser u Where u.uztuserId = :value");
             query.setParameter("value", Id);
-            List<Uztuser> lista= query.getResultList();
-            return lista.get(0);
-        }catch(NoResultException e)
-        {
+            List<Uztuser> lista = query.getResultList();
+            return lista;
+        } catch (NoResultException e) {
             return null;
         }
-        
 
     }
     ////////////////////////////.
-    
+
     //Metodo que devuelve el usuario segun el Pidm
-    public Uztuser findUserByPidm(BigDecimal PIDM) {
+    public List<Uztuser> findUserByPidm(BigDecimal PIDM) {
 
-        try{
-        Query query = em.createQuery("SELECT u FROM Uztuser u WHERE u.uztuserPidm = :uztuserPidm");
-        query.setParameter("uztuserPidm", PIDM);
-        return (Uztuser) query.getSingleResult();
-        }catch(NoResultException e)
-        {
+        try {
+            Query query = em.createQuery("SELECT u FROM Uztuser u WHERE u.uztuserPidm = :uztuserPidm");
+            query.setParameter("uztuserPidm", PIDM);
+            return query.getResultList();
+        } catch (NoResultException e) {
             return null;
         }
 
     }
     ////////////////////////////.
-    
+
     //Metodo que devuelve el usuario segun el Nombre
     public List<Uztuser> findUserByNombres(String nombres) {
 
-        try{
-        Query query = em.createQuery("SELECT u FROM Uztuser u WHERE UPPER(u.uztuserNombres) LIKE UPPER(:uztuserNombres)");
-        query.setParameter("uztuserNombres", "%"+nombres+"%");
-        return query.getResultList();
-        }catch(NoResultException e)
-        {
+        try {
+            Query query = em.createQuery("SELECT u FROM Uztuser u WHERE UPPER(u.uztuserNombres) LIKE UPPER(:uztuserNombres)");
+            query.setParameter("uztuserNombres", "%" + nombres + "%");
+            return query.getResultList();
+        } catch (NoResultException e) {
             return null;
         }
 
     }
     ////////////////////////////.
-    
-     //Metodo que devuelve el usuario segun el Cargo
+
+    //Metodo que devuelve el usuario segun el Cargo
     public List<Uztuser> findUserByCargo(String cargo) {
 
-        try{
-        Query query = em.createQuery("SELECT u FROM Uztuser u WHERE UPPER(u.uztuserCargo) LIKE UPPER(:uztuserCargo)");
-        query.setParameter("uztuserCargo", "%"+cargo+"%");
-        return query.getResultList();
-        }catch(NoResultException e)
-        {
+        try {
+            Query query = em.createQuery("SELECT u FROM Uztuser u WHERE UPPER(u.uztuserCargo) LIKE UPPER(:uztuserCargo)");
+            query.setParameter("uztuserCargo", "%" + cargo + "%");
+            return query.getResultList();
+        } catch (NoResultException e) {
             return null;
         }
 
     }
     ////////////////////////////.
 
-         //Metodo que devuelve el usuario segun el Cargo
+    //Metodo que devuelve el usuario segun el Cargo
     public List<Uztuser> findUserByEstado(Character estado) {
 
-        try{
-        Query query = em.createQuery("SELECT u FROM Uztuser u WHERE u.uztuserEstado = :uztuserEstado");
-        query.setParameter("uztuserEstado", estado);
-        return query.getResultList();
-        }catch(NoResultException e)
-        {
+        try {
+            Query query = em.createQuery("SELECT u FROM Uztuser u WHERE u.uztuserEstado = :uztuserEstado");
+            query.setParameter("uztuserEstado", estado);
+            return query.getResultList();
+        } catch (NoResultException e) {
             return null;
         }
 
     }
     ////////////////////////////.
-    
-     //Metodo que devuelve el usuario segun el Campus
+
+    //Metodo que devuelve el usuario segun el Campus
     public List<Uztuser> findUserByCampus(String campus) {
 
-        try{
-        Query query = em.createQuery("SELECT u FROM Uztuser u WHERE UPPER(u.uztuserCampus) LIKE UPPER(:uztuserCampus)");
-        query.setParameter("uztuserCampus", "%"+campus+"%");
-        return query.getResultList();
-        }catch(NoResultException e)
-        {
+        try {
+            Query query = em.createQuery("SELECT u FROM Uztuser u WHERE UPPER(u.uztuserCampus) LIKE UPPER(:uztuserCampus)");
+            query.setParameter("uztuserCampus", "%" + campus + "%");
+            return query.getResultList();
+        } catch (NoResultException e) {
             return null;
         }
 
     }
     ////////////////////////////.
-    
+
     // Transforma una List a Json en formato String
     public String toJson(List prueba) {
         JSONSerializer json = new JSONSerializer();
