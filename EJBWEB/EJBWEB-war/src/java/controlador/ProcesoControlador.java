@@ -9,6 +9,7 @@ import entidades.Uztproc;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.List;
+import javax.crypto.NoSuchPaddingException;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -73,5 +74,10 @@ public class ProcesoControlador implements Serializable {
     public String toJson(List prueba) {
 
         return this.uztprocFacade.toJson(prueba);
+    }
+      //encriptar datos
+    public String encriptarC(String texto) throws NoSuchPaddingException
+    {
+        return this.uztprocFacade.encriptar(texto);
     }
 }

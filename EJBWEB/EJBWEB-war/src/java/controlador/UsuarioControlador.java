@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import modelo.UztuserFacade;
 import java.util.*;
+import javax.crypto.NoSuchPaddingException;
 
 @ManagedBean
 @SessionScoped
@@ -52,6 +53,11 @@ public class UsuarioControlador implements Serializable {
     public String toJson(List prueba) {
 
         return this.uztuserFacade.toJson(prueba);
+    }
+    //encriptar datos
+    public String encriptarC(String texto) throws NoSuchPaddingException
+    {
+        return this.uztuserFacade.encriptar(texto);
     }
 
 }

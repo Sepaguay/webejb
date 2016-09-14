@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import javax.crypto.NoSuchPaddingException;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -29,7 +30,7 @@ public class SistemaControlador implements Serializable {
     public SistemaControlador() {
     }
 
-    public boolean insertarSistema() {
+    public boolean insertarSistema() throws NoSuchPaddingException {
         Uztsist nuevo = new Uztsist();
         nuevo.setUztsistId(new BigDecimal(611));
         nuevo.setUztsistNombre("prueba 611");
@@ -46,7 +47,7 @@ public class SistemaControlador implements Serializable {
     }
 
     public String obtenerSistemaId() throws Exception {
-        return this.uztsistFacade.Desencriptar(this.uztsistFacade.findSistemaById(new BigDecimal(611)).getUztsistNombre());
+        return this.uztsistFacade.findSistemaById(new BigDecimal(611)).getUztsistNombre();
     }
 
     public List<Uztsist> obtenerSistemaNombre() {
@@ -70,5 +71,17 @@ public class SistemaControlador implements Serializable {
 
         return this.uztsistFacade.toJson(prueba);
     }
+    
+    // Transforma una List a Json en formato String
+    public Uztsist jsonSistema(String prueba) {
 
+        return this.uztsistFacade.jsonSystem(prueba);
+    }
+     //encriptar datos
+    public String encriptarC(String texto) throws NoSuchPaddingException
+    {
+        return this.uztsistFacade.encriptar(texto);
+    }
+    
+    
 }

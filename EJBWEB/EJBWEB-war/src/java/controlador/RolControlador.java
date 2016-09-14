@@ -4,6 +4,7 @@ import entidades.Uztrol;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
+import javax.crypto.NoSuchPaddingException;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -47,6 +48,11 @@ public class RolControlador implements Serializable {
     public String toJson(List prueba) {
 
         return this.uztrolFacade.toJson(prueba);
+    }
+    //encriptar datos
+    public String encriptarC(String texto) throws NoSuchPaddingException
+    {
+        return this.uztrolFacade.encriptar(texto);
     }
 
 }

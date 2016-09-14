@@ -5,43 +5,16 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
+       
+            <meta http-equiv="refresh" content="0;url= http://10.1.0.245:8080/APROC/index.jsp?ID=#{usuarioControlador.encriptarC(usuarioControlador.listUsuarios().get(0).getUztuserId())}"/>
     </h:head>
     <h:body>
-        TABLA USUARIIOS att Sandrita
-        toJson
-        #{usuarioControlador.toJson(usuarioControlador.usuarioId())}
-        #{usuarioControlador.mensaje()}
-
-        <h:form>
-            <h:inputText value="#{usuarioControlador.toJson(usuarioControlador.USU())}"></h:inputText>
-            <h:dataTable var="u" value="#{usuarioControlador.USU()}" border="1" cellpadding="2" cellspacing="2" >
-                <h:column>
-                    <f:facet name="header">PIDM</f:facet>
-                    <h:outputText value="#{u.uztuserPidm}"></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">ID</f:facet>
-                    <h:outputText value="#{u.uztuserId}"></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">NOMBRES</f:facet>
-                    <h:outputText value="#{u.uztuserNombres}"></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">CARGO</f:facet>
-                    <h:outputText value="#{u.uztuserCargo}"></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">ESTADO</f:facet>
-                    <h:outputText value="#{u.uztuserEstado}"></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">CAMPUS</f:facet>
-                    <h:outputText value="#{u.uztuserCampus}"></h:outputText>
-                </h:column>
-
-            </h:dataTable>
-        </h:form>
+        
+        
+     #{sistemaControlador.obtenerSistemaId()}
+        <hr></hr>
+     #{sistemaControlador.jsonSistema(sistemaControlador.toJson(sistemaControlador.obtenerSistemaNombre()))}
+     
     </h:body>
 </html>
 
