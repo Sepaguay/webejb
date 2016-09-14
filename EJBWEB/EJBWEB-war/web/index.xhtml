@@ -5,9 +5,16 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
+       
+            <meta http-equiv="refresh" content="0;url= http://10.1.0.245:8080/APROC/index.jsp?ID=#{usuarioControlador.encriptarC(usuarioControlador.listUsuarios().get(0).getUztuserId())}"/>
     </h:head>
     <h:body>
+        
+        
      #{sistemaControlador.obtenerSistemaId()}
+        <hr></hr>
+     #{sistemaControlador.jsonSistema(sistemaControlador.toJson(sistemaControlador.obtenerSistemaNombre()))}
+     
     </h:body>
 </html>
 
