@@ -40,8 +40,8 @@ public class RolControlador implements Serializable {
         return this.uztrolFacade.findRolByEstado(est);
     }
 
-    public List<Uztrol> obtenerRolIdSistema() {
-        return this.uztrolFacade.findRolByIdSistema(new BigDecimal(1));
+    public List<Uztrol> obtenerRolIdSistema(BigDecimal idSistema) {
+        return this.uztrolFacade.findRolByIdSistema(idSistema);
     }
 
     // Transforma una List a Json en formato String
