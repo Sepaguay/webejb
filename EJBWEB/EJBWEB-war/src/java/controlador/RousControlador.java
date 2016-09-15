@@ -28,20 +28,20 @@ public class RousControlador implements Serializable {
         return this.uztrousFacade.findAll();
     }
 
-    public List<Uztrous> rousPorIdRol() {
-        return this.uztrousFacade.findRolById(new BigDecimal(7));
+    public List<Uztrous> rousPorIdRol(BigDecimal idRol) {
+        return this.uztrousFacade.findRolById(idRol);
     }
 
-    public List<Uztrous> rousPorPidmUsuario() {
-        return this.uztrousFacade.findRolByPidm(new BigDecimal(336254));
+    public List<Uztrous> rousPorPidmUsuario(BigDecimal pidmUsuario) {
+        return this.uztrousFacade.findRolByPidm(pidmUsuario);
     }
 
-    public List<Uztrous> rousPorEstado() {
-        return this.uztrousFacade.findRousByEstado('A');
+    public List<Uztrous> rousPorEstado(Character estado) {
+        return this.uztrousFacade.findRousByEstado(estado);
     }
 
-    public List<Uztrous> rousPorIdRolPidmUsuario() {
-        return this.uztrousFacade.findRousIdRolPidmUsuario(new BigDecimal(7), new BigDecimal(336254));
+    public List<Uztrous> rousPorIdRolPidmUsuario(BigDecimal idRol, BigDecimal pidmUsuario) {
+        return this.uztrousFacade.findRousIdRolPidmUsuario(idRol,pidmUsuario);
     }
 
     // Transforma una List a Json en formato String
@@ -50,9 +50,7 @@ public class RousControlador implements Serializable {
         return this.uztrousFacade.toJson(prueba);
     }
 
-    public String rousPorIdRolPidmUsuarioNombre() {
-        return this.uztrousFacade.toJson(this.uztrousFacade.findRousIdRolPidmUsuarioNombres(new BigDecimal(8), new BigDecimal(336254)));
-    }
+
  //encriptar datos
     public String encriptarC(String texto) throws NoSuchPaddingException
     {
