@@ -46,24 +46,24 @@ public class SistemaControlador implements Serializable {
         return this.uztsistFacade.findAll();
     }
 
-    public String obtenerSistemaId() throws Exception {
-        return this.uztsistFacade.findSistemaById(new BigDecimal(611)).getUztsistNombre();
+    public String obtenerSistemaId(BigDecimal idS) throws Exception {
+        return this.uztsistFacade.findSistemaById(idS).getUztsistNombre();
     }
 
-    public List<Uztsist> obtenerSistemaNombre() {
-        return this.uztsistFacade.findSistemaByNombre("WEBFLOW");
+    public List<Uztsist> obtenerSistemaNombre(String nombreSis) {
+        return this.uztsistFacade.findSistemaByNombre(nombreSis);
     }
 
-    public List<Uztsist> obtenerSistemasEstado() {
-        return this.uztsistFacade.findSistemasByEstado(new Character('A'));
+    public List<Uztsist> obtenerSistemasEstado(Character estSis) {
+        return this.uztsistFacade.findSistemasByEstado(estSis);
     }
 
-    public List<Uztsist> obtenerSistemasRuta() {
-        return this.uztsistFacade.findSistemasByRuta("miespe");
+    public List<Uztsist> obtenerSistemasRuta(String rutaSis) {
+        return this.uztsistFacade.findSistemasByRuta(rutaSis);
     }
 
-    public List<Uztsist> obtenerSistemasDescripción() {
-        return this.uztsistFacade.findSistemasByDescripción("sistema");
+    public List<Uztsist> obtenerSistemasDescripción(String desSis) {
+        return this.uztsistFacade.findSistemasByDescripción(desSis);
     }
 
     // Transforma una List a Json en formato String
@@ -71,17 +71,16 @@ public class SistemaControlador implements Serializable {
 
         return this.uztsistFacade.toJson(prueba);
     }
-    
+
     // Transforma una List a Json en formato String
     public Uztsist jsonSistema(String prueba) {
 
         return this.uztsistFacade.jsonSystem(prueba);
     }
-     //encriptar datos
-    public String encriptarC(String texto) throws NoSuchPaddingException
-    {
+
+    //encriptar datos
+    public String encriptarC(String texto) throws NoSuchPaddingException {
         return this.uztsistFacade.encriptar(texto);
     }
-    
-    
+
 }

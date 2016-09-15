@@ -28,16 +28,16 @@ public class RolControlador implements Serializable {
         return this.uztrolFacade.findAll();
     }
 
-    public List<Uztrol> obtenerRolId() {
-        return this.uztrolFacade.findRolById(new BigDecimal(1));
+    public List<Uztrol> obtenerRolId(BigDecimal rolid) {
+        return this.uztrolFacade.findRolById(rolid);
     }
 
-    public List<Uztrol> obtenerRolNombre() {
-        return this.uztrolFacade.findRolByNombre("UTIC");
+    public List<Uztrol> obtenerRolNombre(String nombre) {
+        return this.uztrolFacade.findRolByNombre(nombre);
     }
 
-    public List<Uztrol> obtenerRolesEstado() {
-        return this.uztrolFacade.findRolByEstado(new Character('A'));
+    public List<Uztrol> obtenerRolesEstado(Character est) {
+        return this.uztrolFacade.findRolByEstado(est);
     }
 
     public List<Uztrol> obtenerRolIdSistema() {
